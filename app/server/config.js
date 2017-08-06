@@ -28,4 +28,4 @@ const DEFAULTS = {
     }
 };
 
-module.exports = rc('maisramboia', DEFAULTS);
+module.exports = rc('config', DEFAULTS);

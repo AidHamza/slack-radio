@@ -66,8 +66,24 @@ function start(app, options) {
         }
     });
 
-    controller.hears(['link me', 'linkme', 'url', 'link'], ['direct_mention', 'direct_message'], exactMatch, function (bot, message) {
-        bot.reply(message, `<@${message.user}> the url is: <${url}>`);
+    controller.hears(['mute'], ['direct_mention'], exactMatch, function (bot, message) {
+        let mute = Behaviour.mutePlayer();
+
+        if (mute) {
+            bot.reply(message, `<@${message.user}> muted the Player`);
+        } else {
+            bot.reply(message, `<@${message.user}>: Player already muted!`);
+        }
+    });
+
+    controller.hears(['unmute'], ['direct_mention'], exactMatch, function (bot, message) {
+        let unmute = Behaviour.unmutePlayer();
+
+        if (unmute) {
+            bot.reply(message, `<@${message.user}> unmuted the Player`);
+        } else {
+            bot.reply(message, `<@${message.user}>: Music already playing :)`);
+        }
     });
 
     controller.hears(['help', 'helpme', 'help me'], ['direct_mention', 'direct_message'], exactMatch, function (bot, message) {
@@ -77,8 +93,9 @@ function start(app, options) {
                 title: "Available commands",
                 text: "*&lt;video_url&gt;*: will add a video url to the queue\n" +
                 "*skip*: will vote to skip the current track\n" +
-                "*link me*: will print the link to the player\n" +
-                "*what’s playing?*: will print the currently playing song\n" +
+                "*current* OR *what’s playing?*: will print the currently playing song\n" +
+                "*mute* : will mute the player\n" +
+                "*unmute*: will unmute the player and resume playing music\n" +
                 "*help*: shows this help screen\n" +
                 "or just say something to me and I'll search youtube for a random video",
                 mrkdwn_in: ["text"]
@@ -86,7 +103,7 @@ function start(app, options) {
         });
     });
 
-    controller.hears([/what[’|']?s playing\??/, /what is playing\??/, 'now playing'], ['direct_mention', 'direct_message'], function (bot, message) {
+    controller.hears([/what[’|']?s playing\??/, /what is playing\??/, 'now playing', 'current'], ['direct_mention', 'direct_message'], function (bot, message) {
         let response = getNowPlayingMessage(
             message.user,
             Behaviour.getCurrent()

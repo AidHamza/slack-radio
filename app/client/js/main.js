@@ -29,6 +29,8 @@ function init() {
             socket.on('playlist_change', updatePlaylist);
             socket.on('playlist_add', addVideo);
             socket.on('video_change', updateCurrentEntry);
+            socket.on('player_mute', playerMute);
+            socket.on('player_unmute', playerUnmute);
 
             socket.on('reconnect', synchronizeState)
         },
@@ -40,6 +42,17 @@ function init() {
     player.isMuted().then(updateMuteButton);
 
     updateTime();
+}
+
+function playerMute() {
+    console.log("hhhehe");
+    player.mute();
+    synchronizeState();
+}
+
+function playerUnmute() {
+    player.unMute();
+    synchronizeState();
 }
 
 function synchronizeState() {

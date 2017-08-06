@@ -15,7 +15,9 @@ class BUS extends EventEmitter {
 BUS.TOPICS = {
     VIDEO_CHANGE: 'video_change',
     PLAYLIST_CHANGE: 'playlist_change',
-    VIDEO_SKIP: 'video_skip'
+    VIDEO_SKIP: 'video_skip',
+    MUTE_PLAYER: 'player_mute',
+    UNMUTE_PLAYER: 'player_unmute'
 };
 
 module.exports = BUS;

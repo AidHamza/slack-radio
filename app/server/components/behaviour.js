@@ -30,6 +30,21 @@ function start(options) {
     });
 }
 
+//TODO: Handle toggling check
+function mutePlayer() {
+    const pl = Playlist.getInstance();
+
+    pl.mutePlayer();
+    return true;
+}
+
+function unmutePlayer() {
+    const pl = Playlist.getInstance();
+    
+    pl.unmutePlayer();
+    return true;
+}
+
 function addVideo(provider, message) {
     const pl = Playlist.getInstance();
 
@@ -85,5 +100,7 @@ module.exports = {
     getEntries: getEntries,
     getCurrent: getCurrent,
     getVotes: getVotes,
+    mutePlayer: mutePlayer,
+    unmutePlayer: unmutePlayer,
     getProviders: () => PROVIDERS
 };

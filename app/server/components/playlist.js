@@ -11,6 +11,8 @@ const TOPICS = {
     VIDEO_CHANGE: 'video_change',
     PLAYLIST_CHANGE: 'playlist_change',
     VIDEO_SKIP: 'video_skip',
+    MUTE_PLAYER: 'player_mute',
+    UNMUTE_PLAYER: 'player_unmute',
 };
 
 class Playlist extends EventEmitter {
@@ -166,6 +168,14 @@ class Playlist extends EventEmitter {
         console.info("Video was skipped", skippedEntry, votes);
 
         this.emit(TOPICS.VIDEO_SKIP, skippedEntry, votes);
+    }
+
+    mutePlayer() {
+        this.emit(TOPICS.MUTE_PLAYER);
+    }
+
+    unmutePlayer() {
+        this.emit(TOPICS.UNMUTE_PLAYER);
     }
 
     getCurrent() {

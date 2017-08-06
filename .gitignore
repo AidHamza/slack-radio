@@ -1,7 +1,7 @@
 node_modules
 bower_components
 .idea
-.maisramboiarc
+.configrc
 _public
 *.iml
 npm-debug.log*

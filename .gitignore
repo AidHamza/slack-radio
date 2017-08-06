@@ -1,7 +1,6 @@
 node_modules
 bower_components
 .idea
-.configrc
 _public
 *.iml
 npm-debug.log*

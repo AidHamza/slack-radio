@@ -1,0 +1,13 @@
+{
+	"url": "http://radio.smmqa.com",
+	"hostname": "0.0.0.0",
+	"reverseProxyMode": false,
+	"port": 8080,
+	"youtube": {
+		"region": "MA"
+	},
+	"playlist": {
+        "minDuration": 1,
+        "votes": 3
+    }
+}

@@ -97,13 +97,14 @@ class Playlist extends EventEmitter {
             return false;
         }
 
-        for (var i = 0; i < SETTINGS['playlist']['sudoers'].length; i++) {
+        /*for (var i = 0; i < SETTINGS['playlist']['sudoers'].length; i++) {
             if (SETTINGS['playlist']['sudoers'][i] == userID) {
                 this.notifyVideoSkipped(this.currentEntry, userID);
                 this.nextVideo();
                 return true;
             }
-        }
+        }*/
+        console.log(SETTINGS['playlist']['sudoers']);
 
         if (this.votes.indexOf(userID) === -1) {
             this.votes.push(userID);

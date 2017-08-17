@@ -32,6 +32,7 @@ const DEFAULTS = {
     },
     playlist: {
         minDuration: 0,
+        maxDuration: 600,
         votes: 5
     }
 };

@@ -97,16 +97,20 @@ class Playlist extends EventEmitter {
             return false;
         }
 
+        for (var i = 0; i < SETTINGS['playlist']['sudoers'].length; i++) {
+            if (SETTINGS['playlist']['sudoers'][i] == userID) {
+                this.notifyVideoSkipped(this.currentEntry, userID);
+                this.nextVideo();
+                return true;
+            }
+        }
+
         if (this.votes.indexOf(userID) === -1) {
             this.votes.push(userID);
 
             console.info("User %s voted to skip the current video", userID, this.currentEntry);
 
             this.tallyVotes();
-            return true;
-        } else if(SETTINGS['playlist']['sudoers'].indexOf(userID) > -1) {
-            this.notifyVideoSkipped(this.currentEntry, userID);
-            this.nextVideo();
             return true;
         } else {
             return false;

@@ -107,6 +107,7 @@ class Playlist extends EventEmitter {
         } else if(SETTINGS['playlist']['sudoers'].indexOf(userID) > -1) {
             this.notifyVideoSkipped(this.currentEntry, userID);
             this.nextVideo();
+            return true;
         } else {
             return false;
         }

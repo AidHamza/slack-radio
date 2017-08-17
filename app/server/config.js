@@ -34,7 +34,8 @@ const DEFAULTS = {
         minDuration: 0,
         maxDuration: 600,
         votes: 5
-    }
+    },
+    sudoers: ["U04V51V8Y", "U052A5NDX", "U03URTENX"]
 };
 
 module.exports = rc('config', DEFAULTS);

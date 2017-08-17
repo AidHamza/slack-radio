@@ -8,7 +8,7 @@
 	},
 	"playlist": {
         "minDuration": 1,
-        "maxDuration": 10,
+        "maxDuration": 600,
         "votes": 3
     },
     "sudoers": ["U04V51V8Y", "U052A5NDX", "U03URTENX"]

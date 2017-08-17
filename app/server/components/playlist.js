@@ -82,7 +82,8 @@ class Playlist extends EventEmitter {
             throw err;
         }
 
-        if (video.duration > SETTINGS['playlist']['maxDuration']) {
+        if (video.duration >= SETTINGS['playlist']['maxDuration']) {
+            console.info("Video too long duration %d settings %d", video.duration, SETTINGS['playlist']['maxDuration']);
             // Reject video if it's too long
             let err = new Error("Rejected");
             err.reason = "TooLong";

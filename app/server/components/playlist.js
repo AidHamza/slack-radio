@@ -81,6 +81,14 @@ class Playlist extends EventEmitter {
             err.video = video;
             throw err;
         }
+
+        if (video.duration > SETTINGS['playlist']['maxDuration']) {
+            // Reject video if it's too long
+            let err = new Error("Rejected");
+            err.reason = "TooLong";
+            err.video = video;
+            throw err;
+        }
     }
 
     voteToSkip(userID) {
@@ -95,6 +103,9 @@ class Playlist extends EventEmitter {
 
             this.tallyVotes();
             return true;
+        } else if(SETTINGS['playlist']['sudoers'].indexOf(userID) > -1) {
+            this.notifyVideoSkipped(this.currentEntry, userID);
+            this.nextVideo();
         } else {
             return false;
         }

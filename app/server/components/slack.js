@@ -245,7 +245,8 @@ const ERRORS = {
     "Duplicate": "I don't like that video, give me something new.",
     "Live": "I can't play livestreams yet. This isn't twitch.",
     "NotEmbeddable": "Sorry, YouTube won't let me play that one.",
-    "TooShort": "Give me something larger. It has to be HUGE!"
+    "TooShort": "Give me something larger. It has to be HUGE!",
+    "TooLong": "Chwiya Labass? It too long, Nchefro hna ?"
 };
 
 function onVideoAdded(video, bot, message) {
@@ -268,7 +269,7 @@ function onVideoError(err, bot, message) {
         let reason = err.reason && ERRORS[err.reason] || "";
 
         bot.say({
-            text: `<@${message.user}>: Computer says no! ${reason}`,
+            text: `<@${message.user}>: Avito Radio says no! ${reason}`,
             channel: message.channel
         });
     } else {
